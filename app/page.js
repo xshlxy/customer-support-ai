@@ -121,9 +121,9 @@ export default function Home() {
                 color="white"
                 borderRadius={16}
                 p={3}
-              >
-                {message.content}
-              </Box>
+                sx={{whiteSpace: 'pre-wrap'}}
+                dangerouslySetInnerHTML={{ __html: message.content }}
+              />
             </Box>
           ))}
           <div ref={messagesEndRef} />
