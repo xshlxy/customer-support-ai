@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Openai from 'openai';
+import removeMarkdown from 'remove-markdown';
 
 // chatbot response guidelines
 const systemPrompt = {
@@ -34,7 +35,8 @@ export async function POST(req) {
         for await (const chunk of completion) {
           const content = chunk.choices[0]?.delta?.content // Extract the content from the chunk
           if (content) {
-            const text = encoder.encode(content) // Encode the content to Uint8Array
+            const plainText = removeMarkdown(content); // Remove markdown from the content
+            const text = encoder.encode(plainText) // Encode the content to Uint8Array
             controller.enqueue(text) // Enqueue the encoded text to the stream
           }
         }

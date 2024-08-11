@@ -2,6 +2,7 @@
 
 import { Box, Button, Stack, TextField } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -57,7 +58,7 @@ export default function Home() {
       console.error('Error:', error)
       setMessages((messages) => [
         ...messages,
-        { role: 'assistant', content: "I'm sorry, but I encountered an error. Please try again later." },
+        { role: 'assistant', content: "Oops, something went wrong. Please try again later." },
       ])
     }
     setIsLoading(false)
@@ -122,8 +123,9 @@ export default function Home() {
                 borderRadius={16}
                 p={3}
                 sx={{whiteSpace: 'pre-wrap'}}
-                dangerouslySetInnerHTML={{ __html: message.content }}
-              />
+              >
+                <ReactMarkdown>{message.content}</ReactMarkdown>
+              </Box>
             </Box>
           ))}
           <div ref={messagesEndRef} />
