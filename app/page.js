@@ -7,7 +7,7 @@ export default function Home() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm this landing page's support assistant. How can I help you today?",
+      content: "Hey there! I'm your CS Career Assistance. Do you know what you want to do with your Computer Science degree?",
     },
   ])
   const [message, setMessage] = useState('')
