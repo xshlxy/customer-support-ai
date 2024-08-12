@@ -43,7 +43,7 @@ export default function Home() {
     {
       role: "assistant",
       content:
-        "Hey there! I'm your CS Career Assistance. Do you know what you want to do with your Computer Science degree?",
+          "Hey there, welcome to the NextStep CS Dashboard! \n\n The dashboard will be available soon. Don't forget to join the waitlist to get early access and updates. \n\n In the meantime, I can help you with any questions you have about breaking into tech. *Just ask!* ",
     },
   ]);
   const [message, setMessage] = useState("");
@@ -71,7 +71,7 @@ export default function Home() {
         {
           role: "assistant",
           content:
-            "Hey there! I'm your CS Career Assistance. Do you know what you want to do with your Computer Science degree?",
+            "Hey there, welcome to the NextStep CS Dashboard! \n\n The dashboard will be available soon. Don't forget to join the waitlist to get early access and updates. \n\n In the meantime, I can help you with any questions you have about breaking into tech. Just ask!",
         },
       ]);
     } catch (error) {
