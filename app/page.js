@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Stack, TextField } from "@mui/material";
+import {Box, Button, Stack, TextField, Typography} from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import {
@@ -11,6 +11,8 @@ import {
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import {bold} from "next/dist/lib/picocolors";
+import Image from "next/legacy/image";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -177,6 +179,7 @@ export default function Home() {
 
   return (
     <Box
+        bgcolor="#dcefff"
       width="100vw"
       height="100vh"
       display="flex"
@@ -187,25 +190,30 @@ export default function Home() {
     >
       {user && (
         <Button
-          variant="outlined"
+
+          variant="contained"
           onClick={handleSignOut}
           style={{ position: "absolute", top: 20, right: 20 }}
         >
           Sign Out
         </Button>
       )}
+
       {!user ? (
-        <Button variant="contained" onClick={handleSignIn} disabled={!firebase}>
+        <Button variant="contained" onClick={handleSignIn} disabled={!firebase} style={{position: "absolute", top: 300, right: 250}}>
           Sign in with Google
         </Button>
       ) : (
         <Stack
+            bgcolor="#f5f5f5"
           direction={"column"}
-          width="500px"
-          height="700px"
-          border="1px solid black"
+          width="400px"
+          height="500px"
+          border="2px solid black"
+          borderRadius={6}
           p={2}
           spacing={3}
+          style={{position: "absolute", bottom: 20, right: 20}}
         >
           <Stack
             direction={"column"}
@@ -228,8 +236,8 @@ export default function Home() {
                       ? "primary.main"
                       : "secondary.main"
                   }
-                  color="white"
-                  borderRadius={16}
+                  color="#FFF"
+                  borderRadius={10}
                   p={3}
                   sx={{ whiteSpace: "pre-wrap" }}
                 >
@@ -258,6 +266,68 @@ export default function Home() {
           </Stack>
         </Stack>
       )}
+      <Box
+          bgcolor="#1976d2"
+          borderRadius={2}
+        p={2}
+        position="absolute" top={10} bottom={10} left={20}
+        height="98%"
+        textAlign="center"
+        fontWeight="bold"
+        fontFamily={"Poppins, sans"}
+        maxWidth="47%"
+      >
+        <Stack
+            direction={"column"}
+            spacing={2}
+            height="100%"
+        >
+          <Typography variant={"h2"} align="center" color={"#fff"} textTransform={"uppercase"}>
+            Welcome to NextStep CS
+          </Typography>
+          <br/>
+          <Typography variant="h5" align="center" color={"#fff"} width={"95%"}>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            We're building something amazing.
+          </Typography>
+          <br/>
+          <br/>
+          <br/>
+          <Typography variant="h5" align="center" color={"#000"} width={"95%"}>
+            Your all-in-one dashboard for career guidance, technical skill development, resume building, and offer
+            negotiation tips.
+          </Typography>
+          <br/>
+          <br/><br/>
+          <Typography variant="h5" align="center" color={"#000"} width={"95%"}>
+            Learn how to land your dream job in tech.
+          </Typography>
+          <br/>
+          <br/>
+          <Typography variant="h6" align="center" color={"#000"} width={"95%"}>
+            Build your resume, practice your interview skills, and get personalized career advice.
+            <br/>
+          </Typography>
+          <br/>
+          <br/>
+          <Typography variant="h6" align="center" color={"#fff"} width={"95%"}>
+            Sign up for early access today!
+          </Typography>
+          <form>
+            <TextField
+                label="Email"
+                fullWidth
+                variant="outlined"
+                size="large"
+                color="secondary"
+            />
+            <br/>
+            <Button variant="contained" color="secondary" size="large" fullWidth>
+              Sign Up for Early Access
+            </Button>
+          </form>
+        </Stack>
+      </Box>
     </Box>
   );
 }
